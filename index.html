@@ -10,6 +10,10 @@
     <script src="https://code.jquery.com/jquery-3.7.1.js"
         integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
         </script>
+    <!-- link font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- favicon -->
     <link rel="icon" href="./assets/battery.png" type="image/x-icon">
@@ -17,8 +21,8 @@
     <title>UPS Backup Time Calculator</title>
 </head>
 
-<body class="bg-gray-100 dark:bg-gray-950">
-    <div class="container mx-auto mt-10 text-black dark:text-white ">
+<body class="bg-gray-100 dark:bg-gray-950 sm:px-10">
+    <div class="container mx-auto mt-10 text-black dark:text-white">
         <h1 class="mb-6 text-3xl font-bold text-center">UPS Backup Time Calculator</h1>
         <form id="calculatorForm"
             class="flex flex-col max-w-md gap-5 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
@@ -72,7 +76,8 @@
             </div>
 
             <div class="my-4 sm:col-span-4">
-                <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                <button type="button"
+                    class="px-4 py-2 text-white transition-all duration-300 bg-blue-500 rounded hover:bg-blue-600"
                     onclick="calculateBatteryTime()">Calculate</button>
             </div>
         </form>
@@ -82,18 +87,67 @@
         </div>
     </div>
 
-    <footer class="container m-4 mx-auto bg-white rounded-md shadow dark:bg-gray-700">
+    <footer class="container m-4 mx-auto rounded-md shadow bg-neutral-300 dark:bg-gray-700">
         <div class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024 <a
-                    href="https://github.com/samiulislamsharan" class="hover:underline" target="_blank"
-                    rel="external noopener">Samiul Islam</a>. All Rights
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2024
+                <a href="https://github.com/samiulislamsharan"
+                    class="font-medium transition-all duration-100 hover:text-base hover:underline hover:text-white active:text-white"
+                    target="_blank" rel="external noopener">Samiul Islam</a>. All Rights
                 Reserved.
             </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 ">
                 <li>
                     <a href="https://github.com/samiulislamsharan/ups-backup-time-calculator"
-                        class="hover:underline me-4 md:me-6" target="_blank" rel="external noopener">Star This
-                        Repo</a>
+                        class="transition-all duration-200 me-4 hover:text-white active:text-white" target="_blank"
+                        rel="external noopener">
+                        <div class="fa-brands fa-github"></div>
+                        Star This Repo
+                    </a>
+                </li>
+                <li>
+                    <button onclick="help_modal.showModal()"
+                        class="transition-all duration-200 me-4 md:me-6 hover:text-white active:text-white">
+                        <i class="fa-solid fa-question"></i>
+                        Help
+                    </button>
+
+                    <!-- create a dialog element -->
+                    <dialog id="help_modal"
+                        class="p-10 text-black transition-all duration-300 rounded-md dark:bg-gray-800 dark:text-white backdrop-blur-sm">
+                        <h2 class="text-5xl font-bold">Help</h2>
+                        <hr class="my-4">
+                        <div class="p-8 bg-white rounded-md shadow-lg dark:bg-gray-700">
+                            <h2 class="text-2xl font-bold">What is UPS Backup Time Calculator?</h2>
+                            <p class="mt-2">UPS Backup Time Calculator is a simple tool to calculate the backup time
+                                of
+                                your UPS based on the total load (Watt), power factor, battery voltage, and number
+                                of
+                                batteries.</p>
+                            <h2 class="mt-4 text-2xl font-bold">How to use UPS Backup Time Calculator?</h2>
+                            <p class="mt-2">To use UPS Backup Time Calculator, you need to enter the total load
+                                (Watt),
+                                power factor, battery voltage, and number of batteries. Then, click the "Calculate"
+                                button to get the backup time of your UPS.</p>
+                            <h2 class="mt-4 text-2xl font-bold">What is Power Factor?</h2>
+                            <p class="mt-2">Power factor is the ratio of real power to apparent power. It is a
+                                measure
+                                of how effectively electrical power is being used. The power factor can range from 0
+                                to
+                                1, with 1 being the ideal power factor.</p>
+                            <h2 class="mt-4 text-2xl font-bold">What is Battery Voltage?</h2>
+                            <p class="mt-2">Battery voltage is the voltage rating of the battery used in the UPS
+                                system.
+                                It is usually expressed in volts (V).</p>
+                            <h2 class="mt-4 text-2xl font-bold">What is Number of Batteries?</h2>
+                            <p class="mt-2">Number of batteries is the total number of batteries connected in series
+                                in
+                                the UPS system. The number of batteries determines the total capacity and backup
+                                time of
+                                the UPS system.</p>
+                        </div>
+                        <button
+                            class="px-4 py-2 my-4 text-white transition-all duration-300 bg-blue-500 rounded-md hover:bg-blue-600 dark:bg-gray-700"
+                            onclick="help_modal.close()">Close</button>
                 </li>
             </ul>
         </div>
@@ -112,12 +166,39 @@
             var upsCurrent = upsVA / batteryBankVoltage;
             var batteryBackupHours = batteryCapacity / upsCurrent;
 
-            // convert hours to minutes
+            // convert if batteryBackupHours is < 1, convert to minutes otherwise convert batteryBackupHours to hours and minutes
             if (batteryBackupHours < 1) {
                 var batteryBackupMinutes = batteryBackupHours * 60;
-                document.getElementById('result').innerHTML = "Battery Backup Time: " + batteryBackupMinutes.toFixed(2) + " minutes";
-            } else
-                document.getElementById('result').innerHTML = "Battery Backup Time: " + batteryBackupHours.toFixed(2) + " hours";
+                document.getElementById('result').innerHTML = batteryBackupMinutes.toFixed(2) + ' Minutes';
+            } else {
+                var hours = Math.floor(batteryBackupHours);
+                var minutes = Math.round((batteryBackupHours - hours) * 60);
+                document.getElementById('result').innerHTML = hours + ' Hours ' + minutes + ' Minutes';
+            }
+        }
+
+        // create a dialog element
+        var dialog = document.createElement('dialog');
+
+        // create a button element
+        var button = document.createElement('button');
+        button.textContent = 'Close';
+        button.className = 'btn';
+
+        // append the button to the dialog
+        dialog.appendChild(button);
+
+        // append the dialog to the body
+        document.body.appendChild(dialog);
+
+        // create a function to show the dialog
+        function showModal() {
+            dialog.showModal();
+        }
+
+        // create a function to close the dialog
+        function closeModal() {
+            dialog.close();
         }
     </script>
 </body>
