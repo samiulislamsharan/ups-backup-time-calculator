@@ -3,52 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
-        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- link Tailwind CSS -->
+    <link href="./css/style.css" rel="stylesheet">
 
-    <title>UPS Battery Time Calculator</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
+        </script>
+
+    <!-- favicon -->
+    <link rel="icon" href="./assets/battery.png" type="image/x-icon">
+
+    <title>UPS Backup Time Calculator</title>
 </head>
-<body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">UPS Backup Time Calculator</h1>
-        <form id="calculatorForm">
-            <div class="form-group">
-                <label for="power">Power (Watt):</label>
-                <input type="number" class="form-control" id="power" required>
+
+<body class="bg-gray-100 dark:bg-gray-950">
+    <div class="container mx-auto mt-10 text-black dark:text-white ">
+        <h1 class="mb-6 text-3xl font-bold text-center">UPS Backup Time Calculator</h1>
+        <form id="calculatorForm"
+            class="flex flex-col max-w-md gap-5 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
+
+            <div class="sm:col-span-4">
+                <label for="power" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Total Load
+                    (Watt):</label>
+                <div class="">
+                    <input id="power" type="number" required
+                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-teal-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="powerFactor">Power Factor:</label>
-                <input type="number" class="form-control" id="powerFactor" value="0.9" required>
+
+            <div class="sm:col-span-4">
+                <label for="powerFactor" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Power
+                    Factor:</label>
+                <div class="">
+                    <input id="powerFactor" type="number" required value="0.9"
+                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-teal-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="batteryVoltage">Battery Voltage (V):</label>
-                <input type="number" class="form-control" id="batteryVoltage" required>
+
+            <div class="sm:col-span-4">
+                <label for="batteryVoltage"
+                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Battery
+                    Voltage (V):</label>
+                <div class="">
+                    <input id="batteryVoltage" type="number" required
+                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-teal-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="numberOfBatteries">Number of Batteries:</label>
-                <input type="number" class="form-control" id="numberOfBatteries" required>
+
+            <div class="sm:col-span-4">
+                <label for="numberOfBatteries"
+                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Number of
+                    Batteries:</label>
+                <div class="">
+                    <input id="numberOfBatteries" type="number" required
+                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-teal-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="batteryCapacity">Battery Capacity (Ah):</label>
-                <input type="number" class="form-control" id="batteryCapacity" required>
+
+            <div class="sm:col-span-4">
+                <label for="batteryCapacity"
+                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Battery
+                    Capacity (Ah):</label>
+                <div class="">
+                    <input id="batteryCapacity" type="number" required
+                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-teal-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                </div>
             </div>
-            <button type="button" class="btn btn-primary mt-2" onclick="calculateBatteryTime()">Calculate</button>
+
+            <div class="my-4 sm:col-span-4">
+                <button type="button" class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-600"
+                    onclick="calculateBatteryTime()">Calculate</button>
+            </div>
         </form>
-        <h3 id="result" class="mt-3 fw-bolder"></h3>
+
+        <div class="my-4 sm:col-span-4 ">
+            <div id="result" class="text-3xl text-center"></div>
+        </div>
     </div>
 
-    <footer class="py-3 my-4">
-        <p class="text-center text-muted">© 2024, Samiul Islam <a class="fw-bold text-decoration-none"
-                href="https://github.com/samiulislamsharan" target="_blank" rel="external noopener">GitHub</a></p>
+    <footer class="container m-4 mx-auto bg-white rounded-lg shadow dark:bg-gray-700">
+        <div class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between">
+            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <a
+                    href="https://github.com/samiulislamsharan" class="hover:underline" target="_blank"
+                    rel="external noopener">Samiul Islam</a>. All Rights
+                Reserved.
+            </span>
+            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                <li>
+                    <a href="https://github.com/samiulislamsharan/ups-backup-time-calculator"
+                        class="hover:underline me-4 md:me-6" target="_blank" rel="external noopener">Star This
+                        Repo</a>
+                </li>
+            </ul>
+        </div>
     </footer>
 
     <script>
@@ -73,4 +120,5 @@
         }
     </script>
 </body>
+
 </html>
