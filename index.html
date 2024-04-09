@@ -169,7 +169,7 @@
             // convert if batteryBackupHours is < 1, convert to minutes otherwise convert batteryBackupHours to hours and minutes
             if (batteryBackupHours < 1) {
                 var batteryBackupMinutes = Math.round(batteryBackupHours * 60);
-                document.getElementById('result').innerHTML = batteryBackupMinutes.toFixed(2) + ' Minutes';
+                document.getElementById('result').innerHTML = batteryBackupMinutes + ' Minutes';
             } else {
                 var hours = Math.floor(batteryBackupHours);
                 var minutes = Math.round((batteryBackupHours - hours) * 60);
