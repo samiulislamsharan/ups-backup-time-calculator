@@ -933,10 +933,6 @@ select {
   text-align: center;
 }
 
-.font-mono {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-}
-
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
@@ -962,29 +958,12 @@ select {
   line-height: 1.25rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
 .font-bold {
   font-weight: 700;
 }
 
 .font-medium {
   font-weight: 500;
-}
-
-.font-semibold {
-  font-weight: 600;
-}
-
-.font-black {
-  font-weight: 900;
-}
-
-.font-thin {
-  font-weight: 100;
 }
 
 .leading-6 {
@@ -1041,24 +1020,16 @@ select {
   transition-duration: 150ms;
 }
 
-.transition {
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
-}
-
-.duration-300 {
-  transition-duration: 300ms;
+.duration-100 {
+  transition-duration: 100ms;
 }
 
 .duration-200 {
   transition-duration: 200ms;
 }
 
-.duration-100 {
-  transition-duration: 100ms;
+.duration-300 {
+  transition-duration: 300ms;
 }
 
 .hover\:bg-blue-600:hover {
@@ -1066,28 +1037,9 @@ select {
   background-color: rgb(37 99 235 / var(--tw-bg-opacity));
 }
 
-.hover\:text-2xl:hover {
-  font-size: 1.5rem;
-  line-height: 2rem;
-}
-
-.hover\:text-xl:hover {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.hover\:text-lg:hover {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
-}
-
 .hover\:text-base:hover {
   font-size: 1rem;
   line-height: 1.5rem;
-}
-
-.hover\:font-medium:hover {
-  font-weight: 500;
 }
 
 .hover\:text-white:hover {
@@ -1097,12 +1049,6 @@ select {
 
 .hover\:underline:hover {
   text-decoration-line: underline;
-}
-
-.hover\:transition-all:hover {
-  transition-property: all;
-  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  transition-duration: 150ms;
 }
 
 .focus\:border-blue-500:focus {
@@ -1158,6 +1104,11 @@ select {
 }
 
 @media (prefers-color-scheme: dark) {
+  .dark\:border-blue-500 {
+    --tw-border-opacity: 1;
+    border-color: rgb(59 130 246 / var(--tw-border-opacity));
+  }
+
   .dark\:border-teal-600 {
     --tw-border-opacity: 1;
     border-color: rgb(13 148 136 / var(--tw-border-opacity));

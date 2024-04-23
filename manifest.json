@@ -1,0 +1,15 @@
+{
+    "name": "UPS Backup Time Calculator",
+    "short_name": "UPS Time",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#fff",
+    "theme_color": "#040712",
+    "icons": [
+        {
+            "src": "./assets/battery.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
