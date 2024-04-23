@@ -1109,11 +1109,6 @@ select {
     border-color: rgb(59 130 246 / var(--tw-border-opacity));
   }
 
-  .dark\:border-teal-600 {
-    --tw-border-opacity: 1;
-    border-color: rgb(13 148 136 / var(--tw-border-opacity));
-  }
-
   .dark\:bg-gray-700 {
     --tw-bg-opacity: 1;
     background-color: rgb(55 65 81 / var(--tw-bg-opacity));
