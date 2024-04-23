@@ -13,5 +13,9 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("fetch", event => {
-    console.log(`Intercepted fetch request for: ${event.request.url}`);
+    event.respondWith(
+        caches.match(event.request).then(response => {
+            return response || fetch(event.request);
+        })
+    );
 });
