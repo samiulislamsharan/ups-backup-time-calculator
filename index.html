@@ -1,229 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- theme color -->
     <meta name="theme-color" content="#040712" />
 
     <!-- link Tailwind CSS -->
-    <link href="./css/style.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet" />
 
     <!-- link manifest -->
-    <link rel="manifest" href="./manifest.json">
+    <link rel="manifest" href="./manifest.json" />
 
     <!-- apple touch icon -->
-    <link rel="apple-touch-icon" href="./assets/battery.png">
+    <link rel="apple-touch-icon" href="./assets/battery.png" />
 
     <!-- link jQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.js"
-        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous">
-        </script>
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.js"
+      integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4="
+      crossorigin="anonymous"
+    ></script>
     <!-- link font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- favicon -->
-    <link rel="icon" href="./assets/battery.png" type="image/x-icon">
+    <link rel="icon" href="./assets/battery.png" type="image/x-icon" />
 
     <title>UPS Backup Time Calculator</title>
-</head>
+  </head>
 
-<body class="bg-gray-100 dark:bg-gray-950 sm:px-10">
+  <body class="bg-gray-100 dark:bg-gray-950 sm:px-10">
     <div class="container mx-auto mt-10 text-black dark:text-white">
-        <h1 class="mb-6 text-3xl font-bold text-center">UPS Backup Time Calculator</h1>
-        <form id="calculatorForm"
-            class="flex flex-col max-w-md gap-5 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800">
-
-            <div class="sm:col-span-4">
-                <label for="power" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Total Load
-                    (Watt):</label>
-                <div class="">
-                    <input id="power" type="number" required
-                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
-            </div>
-
-            <div class="sm:col-span-4">
-                <label for="powerFactor" class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Power
-                    Factor:</label>
-                <div class="">
-                    <input id="powerFactor" type="number" required value="0.9"
-                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
-            </div>
-
-            <div class="sm:col-span-4">
-                <label for="batteryVoltage"
-                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Battery
-                    Voltage (V):</label>
-                <div class="">
-                    <input id="batteryVoltage" type="number" required
-                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
-            </div>
-
-            <div class="sm:col-span-4">
-                <label for="numberOfBatteries"
-                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Number of
-                    Batteries:</label>
-                <div class="">
-                    <input id="numberOfBatteries" type="number" required
-                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
-            </div>
-
-            <div class="sm:col-span-4">
-                <label for="batteryCapacity"
-                    class="block text-sm font-medium leading-6 text-gray-900 dark:text-white">Battery
-                    Capacity (Ah):</label>
-                <div class="">
-                    <input id="batteryCapacity" type="number" required
-                        class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                </div>
-            </div>
-
-            <div class="my-4 sm:col-span-4">
-                <button type="button"
-                    class="px-4 py-2 text-white transition-all duration-300 bg-blue-500 rounded hover:bg-blue-600"
-                    onclick="calculateBatteryTime()">Calculate</button>
-            </div>
-        </form>
-
-        <div class="my-4 sm:col-span-4 ">
-            <div id="result" class="text-3xl text-center"></div>
+      <h1 class="mb-6 text-3xl font-bold text-center">
+        UPS Backup Time Calculator
+      </h1>
+      <form
+        id="calculatorForm"
+        class="flex flex-col max-w-md gap-5 p-6 mx-auto bg-white rounded-md shadow-md dark:bg-gray-800"
+      >
+        <div class="sm:col-span-4">
+          <label
+            for="power"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            >Total Load (Watt):</label
+          >
+          <div class="">
+            <input
+              id="power"
+              type="number"
+              required
+              class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
         </div>
+
+        <div class="sm:col-span-4">
+          <label
+            for="powerFactor"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            >Power Factor:</label
+          >
+          <div class="">
+            <input
+              id="powerFactor"
+              type="number"
+              required
+              value="0.9"
+              class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+          <label
+            for="batteryVoltage"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            >Battery Voltage (V):</label
+          >
+          <div class="">
+            <input
+              id="batteryVoltage"
+              type="number"
+              required
+              class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+          <label
+            for="numberOfBatteries"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            >Number of Batteries:</label
+          >
+          <div class="">
+            <input
+              id="numberOfBatteries"
+              type="number"
+              required
+              class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="sm:col-span-4">
+          <label
+            for="batteryCapacity"
+            class="block text-sm font-medium leading-6 text-gray-900 dark:text-white"
+            >Battery Capacity (Ah):</label
+          >
+          <div class="">
+            <input
+              id="batteryCapacity"
+              type="number"
+              required
+              class="block w-full p-4 text-base text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-blue-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            />
+          </div>
+        </div>
+
+        <div class="my-4 sm:col-span-4">
+          <button
+            type="button"
+            class="px-4 py-2 text-white transition-all duration-300 bg-blue-500 rounded hover:bg-blue-600"
+            onclick="calculateBatteryTime()"
+          >
+            Calculate
+          </button>
+        </div>
+      </form>
+
+      <div class="my-4 sm:col-span-4">
+        <div id="result" class="text-3xl text-center"></div>
+      </div>
     </div>
 
-    <footer class="container m-4 mx-auto rounded-md shadow bg-neutral-300 dark:bg-gray-700">
-        <div class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between">
-            <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025
-                <a href="https://github.com/samiulislamsharan"
-                    class="font-medium transition-all duration-100 hover:text-base hover:underline hover:text-white active:text-white"
-                    target="_blank" rel="external noopener">Samiul Islam</a>. All Rights
-                Reserved.
-            </span>
-            <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0 ">
-                <li>
-                    <a href="https://github.com/samiulislamsharan/ups-backup-time-calculator"
-                        class="transition-all duration-200 me-4 hover:text-white active:text-white" target="_blank"
-                        rel="external noopener">
-                        <div class="fa-brands fa-github"></div>
-                        Star This Repo
-                    </a>
-                </li>
-                <li>
-                    <button onclick="help_modal.showModal()"
-                        class="transition-all duration-200 me-4 md:me-6 hover:text-white active:text-white">
-                        <i class="fa-solid fa-question"></i>
-                        Help
-                    </button>
+    <footer
+      class="container m-4 mx-auto rounded-md shadow bg-neutral-300 dark:bg-gray-700"
+    >
+      <div
+        class="w-full max-w-screen-xl p-4 mx-auto md:flex md:items-center md:justify-between"
+      >
+        <span class="text-sm text-gray-500 sm:text-center dark:text-gray-400"
+          >© 2025
+          <a
+            href="https://github.com/samiulislamsharan"
+            class="font-medium transition-all duration-100 hover:text-base hover:underline hover:text-white active:text-white"
+            target="_blank"
+            rel="external noopener"
+            >Samiul Islam</a
+          >. All Rights Reserved.
+        </span>
+        <ul
+          class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0"
+        >
+          <li>
+            <a
+              href="https://github.com/samiulislamsharan/ups-backup-time-calculator"
+              class="transition-all duration-200 me-4 hover:text-white active:text-white"
+              target="_blank"
+              rel="external noopener"
+            >
+              <div class="fa-brands fa-github"></div>
+              Star This Repo
+            </a>
+          </li>
+          <li>
+            <button
+              onclick="help_modal.showModal()"
+              class="transition-all duration-200 me-4 md:me-6 hover:text-white active:text-white"
+            >
+              <i class="fa-solid fa-question"></i>
+              Help
+            </button>
 
-                    <!-- create a dialog element -->
-                    <dialog id="help_modal"
-                        class="p-10 text-black transition-all duration-300 rounded-md dark:bg-gray-800 dark:text-white backdrop-blur-sm">
-                        <h2 class="text-5xl font-bold">Help</h2>
-                        <hr class="my-4">
-                        <div class="p-8 bg-white rounded-md shadow-lg dark:bg-gray-700">
-                            <h2 class="text-2xl font-bold">What is UPS Backup Time Calculator?</h2>
-                            <p class="mt-2">UPS Backup Time Calculator is a simple tool to calculate the backup time
-                                of
-                                your UPS based on the total load (Watt), power factor, battery voltage, and number
-                                of
-                                batteries.
-                            </p>
+            <!-- create a dialog element -->
+            <dialog
+              id="help_modal"
+              class="p-10 text-black transition-all duration-300 rounded-md dark:bg-gray-800 dark:text-white backdrop-blur-sm"
+            >
+              <h2 class="text-5xl font-bold">Help</h2>
+              <hr class="my-4" />
+              <div class="p-8 bg-white rounded-md shadow-lg dark:bg-gray-700">
+                <h2 class="text-2xl font-bold">
+                  What is UPS Backup Time Calculator?
+                </h2>
+                <p class="mt-2">
+                  UPS Backup Time Calculator is a simple tool to calculate the
+                  backup time of your UPS based on the total load (Watt), power
+                  factor, battery voltage, and number of batteries.
+                </p>
 
-                            <h2 class="mt-4 text-2xl font-bold">How to use UPS Backup Time Calculator?</h2>
-                            <p class="mt-2">To use UPS Backup Time Calculator, you need to enter the total load
-                                (Watt),
-                                power factor, battery voltage, and number of batteries. Then, click the "Calculate"
-                                button to get the backup time of your UPS.
-                            </p>
+                <h2 class="mt-4 text-2xl font-bold">
+                  How to use UPS Backup Time Calculator?
+                </h2>
+                <p class="mt-2">
+                  To use UPS Backup Time Calculator, you need to enter the total
+                  load (Watt), power factor, battery voltage, and number of
+                  batteries. Then, click the "Calculate" button to get the
+                  backup time of your UPS.
+                </p>
 
-                            <h2 class="mt-4 text-2xl font-bold">What is Power Factor?</h2>
-                            <p class="mt-2">Power factor is the ratio of real power to apparent power. It is a
-                                measure
-                                of how effectively electrical power is being used. The power factor can range from 0
-                                to
-                                1, with 1 being the ideal power factor.
-                            </p>
+                <h2 class="mt-4 text-2xl font-bold">What is Power Factor?</h2>
+                <p class="mt-2">
+                  Power factor is the ratio of real power to apparent power. It
+                  is a measure of how effectively electrical power is being
+                  used. The power factor can range from 0 to 1, with 1 being the
+                  ideal power factor.
+                </p>
 
-                            <h2 class="mt-4 text-2xl font-bold">What is Battery Voltage?</h2>
-                            <p class="mt-2">Battery voltage is the voltage rating of the battery used in the UPS
-                                system.
-                                It is usually expressed in volts (V).
-                            </p>
+                <h2 class="mt-4 text-2xl font-bold">
+                  What is Battery Voltage?
+                </h2>
+                <p class="mt-2">
+                  Battery voltage is the voltage rating of the battery used in
+                  the UPS system. It is usually expressed in volts (V).
+                </p>
 
-                            <h2 class="mt-4 text-2xl font-bold">What is Number of Batteries?</h2>
-                            <p class="mt-2">Number of batteries is the total number of batteries connected in series
-                                in
-                                the UPS system. The number of batteries determines the total capacity and backup
-                                time of
-                                the UPS system.
-                            </p>
-                        </div>
-                        <button
-                            class="px-4 py-2 my-4 text-white transition-all duration-300 bg-blue-500 rounded-md hover:bg-blue-600 dark:bg-gray-700"
-                            onclick="help_modal.close()">
-                            Close
-                        </button>
-                    </dialog>
-                </li>
-            </ul>
-        </div>
+                <h2 class="mt-4 text-2xl font-bold">
+                  What is Number of Batteries?
+                </h2>
+                <p class="mt-2">
+                  Number of batteries is the total number of batteries connected
+                  in series in the UPS system. The number of batteries
+                  determines the total capacity and backup time of the UPS
+                  system.
+                </p>
+              </div>
+              <button
+                class="px-4 py-2 my-4 text-white transition-all duration-300 bg-blue-500 rounded-md hover:bg-blue-600 dark:bg-gray-700"
+                onclick="help_modal.close()"
+              >
+                Close
+              </button>
+            </dialog>
+          </li>
+        </ul>
+      </div>
     </footer>
 
     <script src="./src/app.js"></script>
 
     <script>
-        function calculateBatteryTime() {
-            var power = parseFloat(document.getElementById('power').value);
-            var powerFactor = parseFloat(document.getElementById('powerFactor').value);
-            var batteryVoltage = parseInt(document.getElementById('batteryVoltage').value);
-            var numberOfBatteries = parseInt(document.getElementById('numberOfBatteries').value);
-            var batteryCapacity = parseFloat(document.getElementById('batteryCapacity').value);
+      function calculateBatteryTime() {
+        var power = parseFloat(document.getElementById("power").value);
+        var powerFactor = parseFloat(
+          document.getElementById("powerFactor").value
+        );
+        var batteryVoltage = parseInt(
+          document.getElementById("batteryVoltage").value
+        );
+        var numberOfBatteries = parseInt(
+          document.getElementById("numberOfBatteries").value
+        );
+        var batteryCapacity = parseFloat(
+          document.getElementById("batteryCapacity").value
+        );
 
-            var upsVA = power / powerFactor;
-            var batteryBankVoltage = batteryVoltage * numberOfBatteries;
-            var upsCurrent = upsVA / batteryBankVoltage;
-            var batteryBackupHours = batteryCapacity / upsCurrent;
+        var upsVA = power / powerFactor;
+        var batteryBankVoltage = batteryVoltage * numberOfBatteries;
+        var upsCurrent = upsVA / batteryBankVoltage;
+        var batteryBackupHours = batteryCapacity / upsCurrent;
 
-            // convert if batteryBackupHours is < 1, convert to minutes otherwise convert batteryBackupHours to hours and minutes
-            if (batteryBackupHours < 1) {
-                var batteryBackupMinutes = Math.round(batteryBackupHours * 60);
-                document.getElementById('result').innerHTML = batteryBackupMinutes + ' Minutes';
-            } else {
-                var hours = Math.floor(batteryBackupHours);
-                var minutes = Math.round((batteryBackupHours - hours) * 60);
-                document.getElementById('result').innerHTML = hours + ' Hours ' + minutes + ' Minutes';
-            }
+        // convert if batteryBackupHours is < 1, convert to minutes otherwise convert batteryBackupHours to hours and minutes
+        if (batteryBackupHours < 1) {
+          var batteryBackupMinutes = Math.round(batteryBackupHours * 60);
+          document.getElementById("result").innerHTML =
+            batteryBackupMinutes + " Minutes";
+        } else {
+          var hours = Math.floor(batteryBackupHours);
+          var minutes = Math.round((batteryBackupHours - hours) * 60);
+          document.getElementById("result").innerHTML =
+            hours + " Hours " + minutes + " Minutes";
         }
+      }
 
-        // create a dialog element
-        var dialog = document.createElement('dialog');
+      // create a dialog element
+      var dialog = document.createElement("dialog");
 
-        // create a button element
-        var button = document.createElement('button');
-        button.textContent = 'Close';
-        button.className = 'btn';
+      // create a button element
+      var button = document.createElement("button");
+      button.textContent = "Close";
+      button.className = "btn";
 
-        // append the button to the dialog
-        dialog.appendChild(button);
+      // append the button to the dialog
+      dialog.appendChild(button);
 
-        // append the dialog to the body
-        document.body.appendChild(dialog);
+      // append the dialog to the body
+      document.body.appendChild(dialog);
 
-        // create a function to show the dialog
-        function showModal() {
-            dialog.showModal();
-        }
+      // create a function to show the dialog
+      function showModal() {
+        dialog.showModal();
+      }
 
-        // create a function to close the dialog
-        function closeModal() {
-            dialog.close();
-        }
+      // create a function to close the dialog
+      function closeModal() {
+        dialog.close();
+      }
     </script>
-</body>
-
+  </body>
 </html>
