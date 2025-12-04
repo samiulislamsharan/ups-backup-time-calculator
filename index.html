@@ -3,6 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- PWA meta tags -->
+    <meta
+      name="description"
+      content="Calculate UPS backup time based on battery capacity, voltage, and load requirements"
+    />
+    <meta
+      name="keywords"
+      content="UPS, backup time, battery calculator, power calculator"
+    />
+    <meta name="theme-color" content="#040712" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="apple-mobile-web-app-title" content="UPS Time" />
+
     <!-- theme color -->
     <meta name="theme-color" content="#040712" />
 
@@ -135,6 +154,15 @@
             Calculate
           </button>
         </div>
+
+        <button
+          type="button"
+          id="shareButton"
+          class="hidden px-4 py-2 ml-2 text-white transition-all duration-300 bg-green-500 rounded hover:bg-green-600"
+          onclick="shareResults()"
+        >
+          <i class="fa-solid fa-share"></i> Share Results
+        </button>
       </form>
 
       <div class="my-4 sm:col-span-4">
@@ -306,5 +334,90 @@
         dialog.close();
       }
     </script>
+
+    <script>
+      function shareResults() {
+        const resultText = document.getElementById("result").textContent;
+
+        if (navigator.share) {
+          navigator
+            .share({
+              title: "UPS Backup Time",
+              text: `My UPS backup time is: ${resultText}`,
+              url: window.location.href,
+            })
+            .catch((error) => console.log("Error sharing:", error));
+        } else {
+          // Fallback - copy to clipboard
+          navigator.clipboard.writeText(`My UPS backup time is: ${resultText}`);
+          alert("Result copied to clipboard!");
+        }
+      }
+
+      // Show share button after calculation
+      const originalCalculate = calculateBatteryTime;
+      calculateBatteryTime = function () {
+        originalCalculate.apply(this, arguments);
+        document.getElementById("shareButton").classList.remove("hidden");
+      };
+    </script>
+
+    <script>
+      // Save form data to localStorage
+      const formInputs = [
+        "power",
+        "powerFactor",
+        "batteryVoltage",
+        "numberOfBatteries",
+        "batteryCapacity",
+      ];
+
+      formInputs.forEach((inputId) => {
+        const input = document.getElementById(inputId);
+
+        // Load saved value
+        const savedValue = localStorage.getItem(inputId);
+        if (savedValue && inputId !== "powerFactor") {
+          input.value = savedValue;
+        }
+
+        // Save on change
+        input.addEventListener("change", () => {
+          localStorage.setItem(inputId, input.value);
+        });
+      });
+    </script>
+
+    <!-- <script>
+      // PWA Install prompt
+      let deferredPrompt;
+      const installButton = document.createElement("button");
+      installButton.textContent = "Install App";
+      installButton.className =
+        "hidden fixed bottom-4 right-4 px-6 py-3 text-white bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 transition-all duration-300 z-50";
+      installButton.id = "installButton";
+      document.body.appendChild(installButton);
+
+      window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installButton.classList.remove("hidden");
+      });
+
+      installButton.addEventListener("click", async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          console.log(`User response: ${outcome}`);
+          deferredPrompt = null;
+          installButton.classList.add("hidden");
+        }
+      });
+
+      window.addEventListener("appinstalled", () => {
+        console.log("PWA installed");
+        installButton.classList.add("hidden");
+      });
+    </script> -->
   </body>
 </html>
